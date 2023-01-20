@@ -5,6 +5,7 @@ const MailSender = require("./MailSender");
 const Listener = require("./listener");
 
 const init = async () => {
+    console.log("Consumer berjalan");
     const playlistsService = new PlaylistsService();
     const mailSender = new MailSender();
     const listener = new Listener(playlistsService, mailSender);
