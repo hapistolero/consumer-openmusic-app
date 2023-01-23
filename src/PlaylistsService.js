@@ -15,14 +15,17 @@ class PlaylistsService {
             values: [owner],
         };
 
-        const playlist = await this._pool.query(query);
+        const result = await this._pool.query(query);
 
-        const playlistId = playlist.rows[0].id;
-        const playlists = playlist.rows[0];
+        const playlistId = result.rows[0].id;
+        const playlists = result.rows[0];
         const songs = await this.getSongsPlaylist(playlistId);
         playlists.songs = songs;
-        console.log(playlists);
-        return playlist.rows[0];
+        const playlist = {
+            playlist: playlists,
+        };
+        console.log(playlist);
+        return playlist;
     }
 
     async getSongsPlaylist(playlistId) {
