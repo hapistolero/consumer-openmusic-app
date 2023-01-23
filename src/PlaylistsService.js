@@ -42,7 +42,7 @@ class PlaylistsService {
 
         return result.rows.map((songs) => ({
             id: songs.id,
-            title: songs.performer,
+            title: songs.title,
             performer: songs.performer,
         }));
     }
